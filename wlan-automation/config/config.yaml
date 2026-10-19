@@ -1,0 +1,24 @@
+# mode: "mock" -> uses the built-in mock router + canned iperf3/iw output (runs anywhere)
+#       "real" -> talks to your real AP, iperf3 server and Wi-Fi client
+mode: mock
+
+router:
+  url: http://127.0.0.1:8080        # real AP example: http://192.168.1.1
+  username: admin
+  password: admin123
+
+ssh:                                # used in real mode to read AP / client stats
+  host: 192.168.1.1
+  port: 22
+  username: admin
+  password: admin123
+
+wlan:
+  interface: wlan0                  # client Wi-Fi interface
+  iperf_server: 192.168.1.10
+  iperf_duration_sec: 10
+
+thresholds:
+  min_throughput_mbps: 300          # e.g. 802.11ac at 3 m
+  min_rssi_dbm: -70
+  max_roam_gap_sec: 1.0             # allowed gap in connectivity during roam
